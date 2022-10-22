@@ -8,44 +8,68 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
+import React, { useEffect } from 'react';
 import {
+  Platform,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import SplashScreen from 'react-native-splash-screen'
+
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' +
+    'Cmd+D or shake for dev menu',
+  android: 'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
 const App = () => {
 
+  useEffect(() => {
+    SplashScreen.hide();
+  });
+  
   return (
-    <SafeAreaView >
-      <StatusBar
-        barStyle='light-content'
-      />
-
-        <View style={styles.container}
-         >
-          <Text style={styles.styleHeader}>Hello</Text>
-        </View>
-   
+    <SafeAreaView style={styles.container}>
+      <View>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="#4F6D7A"
+        />
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          {instructions}
+        </Text>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
-    backgroundColor: '#FFFF99',
-    justifyContent: 'center'
-    
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#4F6D7A',
   },
-  styleHeader: {
-    fontSize: 24,
-    fontWeight: '600',
-    textAlign: 'center'
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    color: '#F5FCFF',
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#F5FCFF',
+    marginBottom: 5,
   },
 });
 
