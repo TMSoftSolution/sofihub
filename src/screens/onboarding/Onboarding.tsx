@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Colors} from '../../AppStyle';
-import {TopNavigationBar} from '../../components';
+import {Pagination, TopNavigationBar} from '../../components';
 import {Onboarding1, Onboarding2, Onboarding3} from './components';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
@@ -32,6 +32,7 @@ export const Onboarding = () => {
       {index == 1 && <Onboarding2 />}
       {index == 2 && <Onboarding3 />}
       <View style={styles.actionContainer}>
+        <Pagination index={index} />
         <TouchableOpacity style={styles.nextButton} onPress={onNext}>
           <FontAwesomeIcon icon="arrow-right" size={24} color={'white'} />
         </TouchableOpacity>
@@ -46,8 +47,6 @@ const styles = StyleSheet.create({
   },
   actionContainer: {
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'red',
   },
   nextButton: {
     position: 'absolute',
