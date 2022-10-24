@@ -1,5 +1,5 @@
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {IconButton} from 'react-native-paper';
 
 interface TopNavigationBarProps {
   showBack?: boolean;
@@ -16,22 +16,19 @@ export const TopNavigationBar = ({
 }: TopNavigationBarProps) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={{justifyContent: 'center'}}
-        onPress={() => {
-          if (showBack) {
-            onBack();
-          }
-        }}>
-        {showBack && (
-          <FontAwesomeIcon
-            icon="chevron-left"
-            style={styles.backIcon}
-            size={24}
-            color={'#A1A8B0'}
-          />
-        )}
-      </TouchableOpacity>
+      {
+        <IconButton
+          icon="chevron-left"
+          style={styles.backIcon}
+          size={36}
+          color={'#A1A8B0'}
+          onPress={() => {
+            if (showBack) {
+              onBack();
+            }
+          }}
+        />
+      }
       <TouchableOpacity
         style={{justifyContent: 'center'}}
         onPress={() => {
@@ -61,6 +58,7 @@ const styles = StyleSheet.create({
     fontFamily: 'SFPRODISPLAY-BOLD',
   },
   backIcon: {
-    marginStart: 24,
+    marginStart: 4,
+    alignSelf: 'center',
   },
 });

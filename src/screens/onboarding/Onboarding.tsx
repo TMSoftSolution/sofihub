@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {FAB} from 'react-native-paper';
 import {Colors} from '../../AppStyle';
 import {Pagination, TopNavigationBar} from '../../components';
 import {Onboarding1, Onboarding2, Onboarding3} from './components';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 export const Onboarding = () => {
   const [index, setIndex] = useState(0);
@@ -19,7 +19,7 @@ export const Onboarding = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TopNavigationBar
         showSkip={true}
         showBack={index != 0}
@@ -33,11 +33,15 @@ export const Onboarding = () => {
       {index == 2 && <Onboarding3 />}
       <View style={styles.actionContainer}>
         <Pagination index={index} />
-        <TouchableOpacity style={styles.nextButton} onPress={onNext}>
-          <FontAwesomeIcon icon="arrow-right" size={24} color={'white'} />
-        </TouchableOpacity>
+        <FAB
+          icon={index != 2 ? 'arrow-right' : ''}
+          color="white"
+          label={index == 2 ? '              DONE              ' : ''}
+          style={styles.nextButton}
+          onPress={onNext}
+        />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -47,13 +51,12 @@ const styles = StyleSheet.create({
   },
   actionContainer: {
     alignItems: 'center',
+    paddingHorizontal: 32,
   },
   nextButton: {
     position: 'absolute',
     borderRadius: 28,
     backgroundColor: Colors.primary,
-    width: 56,
-    height: 56,
     bottom: 70,
     alignItems: 'center',
     justifyContent: 'center',
