@@ -4,8 +4,8 @@ import {IconButton} from 'react-native-paper';
 interface TopNavigationBarProps {
   showBack?: boolean;
   showSkip?: boolean;
-  onBack: Function;
-  onSkip: Function;
+  onBack: Function | null;
+  onSkip: Function | null;
 }
 
 export const TopNavigationBar = ({
@@ -16,23 +16,24 @@ export const TopNavigationBar = ({
 }: TopNavigationBarProps) => {
   return (
     <View style={styles.container}>
-      {
+      {showBack && (
         <IconButton
           icon="chevron-left"
           style={styles.backIcon}
           size={36}
           color={'#A1A8B0'}
           onPress={() => {
-            if (showBack) {
+            if (showBack && onBack) {
               onBack();
             }
           }}
         />
-      }
+      )}
+      <View />
       <TouchableOpacity
         style={{justifyContent: 'center'}}
         onPress={() => {
-          if (showSkip) {
+          if (showSkip && onSkip) {
             onSkip();
           }
         }}>
