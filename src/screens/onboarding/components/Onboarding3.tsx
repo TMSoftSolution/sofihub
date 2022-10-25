@@ -27,6 +27,7 @@ export const Onboarding3 = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   wecomeText: {
     fontFamily: Fonts.header,

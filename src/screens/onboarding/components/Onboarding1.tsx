@@ -26,6 +26,7 @@ export const Onboarding1 = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   welcomeTitle: {
     fontFamily: Fonts.header,

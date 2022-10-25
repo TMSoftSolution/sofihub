@@ -1,4 +1,6 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
+import {RootStackParamList} from '../../App';
 import {Colors, Images, window} from '../../common';
 import {
   TextButton,
@@ -8,7 +10,12 @@ import {
   LocationButton,
 } from '../../components';
 
-export const Welcome = () => {
+type WelcomeNavigationProp = NativeStackScreenProps<
+  RootStackParamList,
+  'Welcome'
+>;
+
+export const Welcome = ({navigation}: WelcomeNavigationProp) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.containerInner}>
@@ -33,7 +40,7 @@ export const Welcome = () => {
           <PrimaryButton
             text="Login"
             onClick={() => {
-              console.log('button clicked');
+              navigation.navigate('Login');
             }}
           />
           <Spacer space={16} />

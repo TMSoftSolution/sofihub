@@ -4,10 +4,12 @@ import {Onboarding} from './screens/onboarding/Onboarding';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Welcome} from './screens/welcome/Welcome';
+import {Login} from './screens/login/Login';
 
 export type RootStackParamList = {
   Onboarding: undefined;
   Welcome: undefined;
+  Login: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -24,6 +26,7 @@ const App = () => {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Onboarding" component={Onboarding} />
         <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
   );

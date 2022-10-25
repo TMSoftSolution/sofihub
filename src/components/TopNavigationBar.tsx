@@ -1,15 +1,18 @@
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {IconButton} from 'react-native-paper';
-import {Colors} from '../common/AppStyle';
+import {backIcon} from '../common';
+import {Colors, Fonts} from '../common/AppStyle';
 
 interface TopNavigationBarProps {
   showBack?: boolean;
   showSkip?: boolean;
-  onBack: Function | null;
-  onSkip: Function | null;
+  onBack?: Function | undefined;
+  onSkip?: Function | undefined;
+  title?: string;
 }
 
 export const TopNavigationBar = ({
+  title,
   showBack,
   showSkip,
   onBack,
@@ -17,11 +20,13 @@ export const TopNavigationBar = ({
 }: TopNavigationBarProps) => {
   return (
     <View style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.title}>{title}</Text>
+      </View>
       {showBack && (
         <IconButton
-          icon="chevron-left"
+          icon={backIcon}
           style={styles.backIcon}
-          size={36}
           color={Colors.secondaryText}
           onPress={() => {
             if (showBack && onBack) {
@@ -30,7 +35,6 @@ export const TopNavigationBar = ({
           }}
         />
       )}
-      <View />
       <TouchableOpacity
         style={{justifyContent: 'center'}}
         onPress={() => {
@@ -50,17 +54,31 @@ const styles = StyleSheet.create({
     height: 56,
     width: '100%',
     justifyContent: 'space-between',
+    backgroundColor: 'white',
   },
   skipText: {
     alignSelf: 'flex-end',
     color: Colors.secondaryText,
-    marginEnd: 24,
+    marginEnd: 10,
     fontSize: 14,
     fontWeight: '400',
     fontFamily: 'SFPRODISPLAY-BOLD',
   },
   backIcon: {
-    marginStart: 4,
+    marginStart: 10,
+    alignSelf: 'center',
+  },
+  content: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  title: {
+    color: Colors.primaryText,
+    fontFamily: Fonts.header,
+    fontSize: 18,
+    fontWeight: '700',
     alignSelf: 'center',
   },
 });
