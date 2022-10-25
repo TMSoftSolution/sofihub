@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {Colors, Images} from '../../../AppStyle';
+import {window} from '../../../Utilties';
 
 export const Onboarding2 = () => {
   return (
@@ -9,8 +10,16 @@ export const Onboarding2 = () => {
         Sofihub alert you when a fail access
       </Text>
       <View style={styles.imageContainer}>
-        <Image source={Images.bgOnboarding2} style={styles.image} />
-        <Image source={Images.imgOnboarding2} style={styles.image1} />
+        <Image
+          source={Images.bgOnboarding2}
+          style={styles.image}
+          resizeMode={'cover'}
+        />
+        <Image
+          source={Images.imgOnboarding2}
+          style={styles.image1}
+          resizeMode={'cover'}
+        />
       </View>
     </View>
   );
@@ -33,16 +42,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column-reverse',
     alignItems: 'center',
     marginTop: 65,
-    marginBottom: 20,
-    marginLeft: 32,
-    marginRight: 32,
   },
   image: {
     flex: 1,
+    height: undefined,
+    aspectRatio: 311 / 563,
   },
   image1: {
     flex: 1,
     position: 'absolute',
-    top: 50,
+    width: window.width * 0.8,
+    height: undefined,
+    top: 38,
+    aspectRatio: 1,
   },
 });

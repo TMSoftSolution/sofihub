@@ -1,5 +1,6 @@
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {IconButton} from 'react-native-paper';
+import {Colors} from '../AppStyle';
 
 interface TopNavigationBarProps {
   showBack?: boolean;
@@ -21,7 +22,7 @@ export const TopNavigationBar = ({
           icon="chevron-left"
           style={styles.backIcon}
           size={36}
-          color={'#A1A8B0'}
+          color={Colors.secondaryText}
           onPress={() => {
             if (showBack && onBack) {
               onBack();
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     alignSelf: 'flex-end',
-    color: '#A1A8B0',
+    color: Colors.secondaryText,
     marginEnd: 24,
     fontSize: 14,
     fontWeight: '400',

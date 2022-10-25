@@ -4,10 +4,17 @@ export const Images = {
     bgOnboarding2: require('./assets/images/bg_onboard_2.png'),
     imgOnboarding2: require('./assets/images/img_onboard_2.png'),
     bgOnboarding3: require('./assets/images/bg_onboard_3.png'),
-    imgOnboarding3: require('./assets/images/img_onboard_3.png')
+    imgOnboarding3: require('./assets/images/img_onboard_3.png'),
+    logo: require('./assets/images/logo.png'),
+    logoWithBrand: require('./assets/images/logo_with_brand.png'),
+    welcomeLogo: require('./assets/images/welcome_logo.png'),
+    bgWelcome: require('./assets/images/bg_welcome.png'),
 }
 
 export const Colors = {
     primary: '#59CBE8',
-    primaryText: '#101623'
+    primaryText: '#101623',
+    secondaryText: '#A1A8B0',
+    primaryBorder: '#A1A8B0',
+    secondaryBackground: '#F0FCFF'
 }

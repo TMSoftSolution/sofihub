@@ -31,26 +31,28 @@ export const Onboarding = ({navigation}: OnboardingNavigationProp) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TopNavigationBar
-        showSkip={true}
-        showBack={index != 0}
-        onBack={onBack}
-        onSkip={() => {
-          console.log('skip pressed');
-        }}
-      />
-      {index == 0 && <Onboarding1 />}
-      {index == 1 && <Onboarding2 />}
-      {index == 2 && <Onboarding3 />}
-      <View style={styles.actionContainer}>
-        <Pagination index={index} />
-        <FAB
-          icon={index != 2 ? 'arrow-right' : ''}
-          color="white"
-          label={index == 2 ? '              DONE              ' : ''}
-          style={styles.nextButton}
-          onPress={onNext}
+      <View style={styles.containerInner}>
+        <TopNavigationBar
+          showSkip={true}
+          showBack={index != 0}
+          onBack={onBack}
+          onSkip={() => {
+            console.log('skip pressed');
+          }}
         />
+        {index == 0 && <Onboarding1 />}
+        {index == 1 && <Onboarding2 />}
+        {index == 2 && <Onboarding3 />}
+        <View style={styles.actionContainer}>
+          <Pagination index={index} />
+          <FAB
+            icon={index != 2 ? 'arrow-right' : ''}
+            color="white"
+            label={index == 2 ? '              DONE              ' : ''}
+            style={styles.nextButton}
+            onPress={onNext}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -59,6 +61,10 @@ export const Onboarding = ({navigation}: OnboardingNavigationProp) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  containerInner: {
+    flex: 1,
+    width: '100%',
   },
   actionContainer: {
     alignItems: 'center',

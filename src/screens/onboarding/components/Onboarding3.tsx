@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {Colors, Images} from '../../../AppStyle';
+import {window} from '../../../Utilties';
 
 export const Onboarding3 = () => {
   return (
@@ -9,8 +10,16 @@ export const Onboarding3 = () => {
         Manage your device emergency contacts from your app
       </Text>
       <View style={styles.imageContainer}>
-        <Image source={Images.bgOnboarding3} style={styles.image} />
-        <Image source={Images.imgOnboarding3} style={styles.image1} />
+        <Image
+          source={Images.bgOnboarding3}
+          style={styles.image}
+          resizeMode={'cover'}
+        />
+        <Image
+          source={Images.imgOnboarding3}
+          style={styles.image1}
+          resizeMode={'cover'}
+        />
       </View>
     </View>
   );
@@ -39,10 +48,15 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
+    height: undefined,
+    aspectRatio: 311 / 563,
   },
   image1: {
     flex: 1,
     position: 'absolute',
-    top: 100,
+    width: window.width * 0.5,
+    height: undefined,
+    top: 78,
+    aspectRatio: 1,
   },
 });
