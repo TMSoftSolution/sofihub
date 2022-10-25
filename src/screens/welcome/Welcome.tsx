@@ -1,5 +1,5 @@
 import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
-import {Colors, Images} from '../../AppStyle';
+import {Colors, Images, window} from '../../common';
 import {
   TextButton,
   OutlinedButton,
@@ -7,7 +7,6 @@ import {
   Spacer,
   LocationButton,
 } from '../../components';
-import {window} from '../../Utilties';
 
 export const Welcome = () => {
   return (

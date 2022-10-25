@@ -1,5 +1,5 @@
 import {StyleSheet, View} from 'react-native';
-import {Colors} from '../AppStyle';
+import {Colors} from '../common/AppStyle';
 
 interface DotProps {
   focus: boolean;

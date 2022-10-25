@@ -1,6 +1,6 @@
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {IconButton} from 'react-native-paper';
-import {Colors} from '../AppStyle';
+import {Colors} from '../common/AppStyle';
 
 interface TopNavigationBarProps {
   showBack?: boolean;

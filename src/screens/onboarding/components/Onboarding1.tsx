@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {Colors, Images} from '../../../AppStyle';
-import {window} from '../../../Utilties';
+import {Colors, Fonts, Images, window} from '../../../common';
 
 export const Onboarding1 = () => {
   return (
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   welcomeTitle: {
-    fontFamily: 'SFPRODISPLAY-BOLD',
+    fontFamily: Fonts.header,
     fontWeight: '700',
     fontSize: 34,
     marginStart: 32,
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
     color: Colors.primaryText,
   },
   wecomeText: {
-    fontFamily: 'SFPRODISPLAY-BOLD',
+    fontFamily: Fonts.header,
     fontWeight: '700',
     fontSize: 24,
     marginStart: 32,

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Button} from 'react-native-paper';
-import {Colors} from '../AppStyle';
+import {Colors, Fonts} from '../common/AppStyle';
 
 interface OutlinedButtonProps {
   text: string;
@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontSize: 16,
     fontWeight: '600',
-    fontFamily: 'SFPRODISPLAY-SEMIBOLD',
+    fontFamily: Fonts.buttonText,
   },
 });

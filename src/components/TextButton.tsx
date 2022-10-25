@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Button} from 'react-native-paper';
-import {Colors} from '../AppStyle';
+import {Colors} from '../common/AppStyle';
 
 interface TextButtonProps {
   text: string;

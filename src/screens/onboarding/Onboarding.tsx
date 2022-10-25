@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {FAB} from 'react-native-paper';
 import {RootStackParamList} from '../../App';
-import {Colors} from '../../AppStyle';
+import {Colors} from '../../common/AppStyle';
 import {Pagination, TopNavigationBar} from '../../components';
 import {Onboarding1, Onboarding2, Onboarding3} from './components';
 
