@@ -23,10 +23,11 @@ export const TopNavigationBar = ({
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
       </View>
-      {showBack && (
+      {showBack ? (
         <IconButton
           icon={backIcon}
           style={styles.backIcon}
+          size={24}
           color={Colors.secondaryText}
           onPress={() => {
             if (showBack && onBack) {
@@ -34,6 +35,8 @@ export const TopNavigationBar = ({
             }
           }}
         />
+      ) : (
+        <View />
       )}
       <TouchableOpacity
         style={{justifyContent: 'center'}}
@@ -59,13 +62,13 @@ const styles = StyleSheet.create({
   skipText: {
     alignSelf: 'flex-end',
     color: Colors.secondaryText,
-    marginEnd: 10,
+    marginEnd: 24,
     fontSize: 14,
     fontWeight: '400',
     fontFamily: 'SFPRODISPLAY-BOLD',
   },
   backIcon: {
-    marginStart: 10,
+    marginStart: 24,
     alignSelf: 'center',
   },
   content: {
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: Colors.primaryText,
-    fontFamily: Fonts.header,
+    fontFamily: Fonts.SFBold,
     fontSize: 18,
     fontWeight: '700',
     alignSelf: 'center',

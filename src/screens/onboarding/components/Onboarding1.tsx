@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   welcomeTitle: {
-    fontFamily: Fonts.header,
+    fontFamily: Fonts.SFBold,
     fontWeight: '700',
     fontSize: 34,
     marginStart: 32,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     color: Colors.primaryText,
   },
   wecomeText: {
-    fontFamily: Fonts.header,
+    fontFamily: Fonts.SFBold,
     fontWeight: '700',
     fontSize: 24,
     marginStart: 32,

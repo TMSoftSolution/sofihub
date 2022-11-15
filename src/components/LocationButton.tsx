@@ -1,5 +1,5 @@
-import {Pressable, StyleSheet, View} from 'react-native';
-import {IconButton, Text} from 'react-native-paper';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {IconButton} from 'react-native-paper';
 import {Colors, Fonts} from '../common/AppStyle';
 
 interface LocationButtonProps {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     color: Colors.secondaryText,
     fontSize: 14,
     fontWeight: '400',
-    fontFamily: Fonts.primaryText,
+    fontFamily: Fonts.SFRegular,
     marginTop: 12,
   },
   locationText: {

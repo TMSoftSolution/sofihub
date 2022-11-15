@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   wecomeText: {
-    fontFamily: Fonts.header,
+    fontFamily: Fonts.SFBold,
     fontWeight: '700',
     fontSize: 24,
     marginStart: 32,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column-reverse',
     alignItems: 'center',
-    marginTop: 35,
+    marginTop: 30,
     marginBottom: 20,
     marginLeft: 32,
     marginRight: 32,

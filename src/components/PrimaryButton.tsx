@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: '600',
-    fontFamily: Fonts.buttonText,
+    fontFamily: Fonts.SFSemiBold,
   },
 });

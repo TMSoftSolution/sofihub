@@ -3,12 +3,16 @@ export const Colors = {
     primaryText: '#101623',
     secondaryText: '#A1A8B0',
     primaryBorder: '#A1A8B0',
-    secondaryBackground: '#F0FCFF'
+    secondaryBackground: '#F0FCFF',
+    error: "#FF5C5C",
+    valid: '#13B97D',
+    primaryInput: "#F9FAFB"
 }
 
 export const Fonts = {
-    header: "SFPRODISPLAY-BOLD",
-    buttonText: "SFPRODISPLAY-SEMIBOLD",
-    primaryText: "SFPRODISPLAY-REGULAR",
-    poppinMedium: "Poppins-Medium"
+    SFBold: "SFPRODISPLAY-BOLD",
+    SFSemiBold: "SFPRODISPLAY-SEMIBOLD",
+    SFRegular: "SFPRODISPLAY-REGULAR",
+    poppinMedium: "Poppins-Medium",
+    SFMedium: "SFPRODISPLAY-MEDIUM"
 }
