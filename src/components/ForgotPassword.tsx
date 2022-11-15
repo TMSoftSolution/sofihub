@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     textDecorationLine: 'underline',
     textAlign: 'right',
+    alignSelf: 'flex-end',
   },
 });

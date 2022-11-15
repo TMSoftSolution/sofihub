@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import Toast from 'react-native-toast-message';
 import {RootStackParamList} from '../../App';
 import {Images} from '../../common';
 import {
@@ -44,12 +45,7 @@ export const Login = ({navigation}: LoginProps) => {
               }}
             />
             <Spacer space={32} />
-            <PrimaryButton
-              text="Login"
-              onClick={() => {
-                console.log('Login button clicked.');
-              }}
-            />
+            <PrimaryButton text="Login" onClick={checkEmailValidation} />
             <Spacer space={24} />
             <SignUpTextLink
               onClick={() => {
@@ -76,3 +72,10 @@ const styles = StyleSheet.create({
     marginTop: 28,
   },
 });
+
+const checkEmailValidation = () => {
+  Toast.show({
+    type: 'error',
+    text1: 'hello',
+  });
+};

@@ -1,8 +1,11 @@
+import {useState} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {Colors, Fonts} from '../common';
 
 export const PasswordInput = () => {
+  const [show, setShow] = useState(false);
+
   return (
     <View style={styles.container}>
       <IconButton
@@ -14,7 +17,7 @@ export const PasswordInput = () => {
       <TextInput
         style={styles.textInput}
         placeholder="Enter your password"
-        keyboardType="visible-password"
+        secureTextEntry={!show}
         cursorColor={Colors.primary}
       />
       <IconButton
@@ -22,6 +25,9 @@ export const PasswordInput = () => {
         size={24}
         color={Colors.secondaryText}
         style={styles.visibleIcon}
+        onPress={() => {
+          setShow(!show);
+        }}
       />
     </View>
   );

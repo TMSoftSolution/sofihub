@@ -10,3 +10,5 @@ export enum FormState {
 }
 
 export const EmailPattern: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+export const NumberPattern: RegExp = /\d/
+export const SpecialCharPattern: RegExp = /[ `!@#$%^&*()_+\-=\]{};':"\\|,.<>?~]/
