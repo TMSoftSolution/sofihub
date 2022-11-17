@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import {Onboarding} from './screens/onboarding/Onboarding';
 import {NavigationContainer} from '@react-navigation/native';
@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Welcome} from './screens/welcome/Welcome';
 import {Login} from './screens/login/Login';
 import Toast from 'react-native-toast-message';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -16,9 +17,22 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+
+  const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
+    console.log(user);
+    setUser(user);
+    if (initializing) setInitializing(false);
+  };
+
   useEffect(() => {
     SplashScreen.hide();
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
   }, []);
+
+  if (initializing) return null;
 
   return (
     <>

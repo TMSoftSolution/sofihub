@@ -20,6 +20,7 @@ import {
   Spacer,
   TopNavigationBar,
 } from '../../components';
+import auth from '@react-native-firebase/auth';
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
@@ -30,7 +31,6 @@ export const Login = ({navigation}: LoginProps) => {
   const [passwordValidate, setPasswordValidate] = useState(false);
 
   const emailChanged = (valid: boolean, email: string) => {
-    console.log(valid);
     setEmail(email);
     setEmailValidate(valid);
   };
@@ -49,6 +49,27 @@ export const Login = ({navigation}: LoginProps) => {
       Toast.show({type: 'error', text1: Errors.passwordValid});
       return;
     }
+
+    login();
+  };
+
+  const login = () => {
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          console.log('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          console.log('That email address is invalid!');
+        }
+
+        console.error(error);
+      });
   };
 
   return (
