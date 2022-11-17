@@ -14,6 +14,7 @@ import {Errors, Images} from '../../common';
 import {
   EmailInput,
   ForgotPassword,
+  Loader,
   PasswordInput,
   PrimaryButton,
   SignUpTextLink,
@@ -29,6 +30,7 @@ export const Login = ({navigation}: LoginProps) => {
   const [emailValidate, setEmailValidate] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordValidate, setPasswordValidate] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const emailChanged = (valid: boolean, email: string) => {
     setEmail(email);
@@ -54,10 +56,12 @@ export const Login = ({navigation}: LoginProps) => {
   };
 
   const login = () => {
+    setLoading(true);
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User account created & signed in!');
+        setLoading(false);
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -69,6 +73,7 @@ export const Login = ({navigation}: LoginProps) => {
         }
 
         console.error(error);
+        setLoading(false);
       });
   };
 
@@ -103,6 +108,7 @@ export const Login = ({navigation}: LoginProps) => {
           </View>
         </View>
       </TouchableWithoutFeedback>
+      {loading && <Loader />}
     </SafeAreaView>
   );
 };

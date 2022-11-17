@@ -6,7 +6,8 @@ export const Colors = {
     secondaryBackground: '#F0FCFF',
     error: "#FF5C5C",
     valid: '#13B97D',
-    primaryInput: "#F9FAFB"
+    primaryInput: "#F9FAFB",
+    loaderBackground: "rgba(00, 00, 00, 0.5)"
 }
 
 export const Fonts = {
