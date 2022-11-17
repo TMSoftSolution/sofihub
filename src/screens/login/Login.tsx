@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Image,
   Keyboard,
@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import Toast from 'react-native-toast-message';
 import {RootStackParamList} from '../../App';
-import {Images} from '../../common';
+import {Errors, Images} from '../../common';
 import {
   EmailInput,
   ForgotPassword,
@@ -24,6 +24,33 @@ import {
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 export const Login = ({navigation}: LoginProps) => {
+  const [email, setEmail] = useState('');
+  const [emailValidate, setEmailValidate] = useState(false);
+  const [password, setPassword] = useState('');
+  const [passwordValidate, setPasswordValidate] = useState(false);
+
+  const emailChanged = (valid: boolean, email: string) => {
+    console.log(valid);
+    setEmail(email);
+    setEmailValidate(valid);
+  };
+
+  const passwordChanged = (valid: boolean, password: string) => {
+    setPassword(password);
+    setPasswordValidate(valid);
+  };
+
+  const checkEmailValidation = () => {
+    if (!emailValidate) {
+      Toast.show({type: 'error', text1: Errors.emmailValid});
+      return;
+    }
+    if (!passwordValidate) {
+      Toast.show({type: 'error', text1: Errors.passwordValid});
+      return;
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -36,9 +63,9 @@ export const Login = ({navigation}: LoginProps) => {
           <View style={styles.mainContainer}>
             <Image source={Images.logo} style={styles.logo} />
             <Spacer space={51} />
-            <EmailInput />
+            <EmailInput onChange={emailChanged} />
             <Spacer space={8} />
-            <PasswordInput />
+            <PasswordInput onChange={passwordChanged} />
             <ForgotPassword
               onClick={() => {
                 console.log('forgot password.');
@@ -72,10 +99,3 @@ const styles = StyleSheet.create({
     marginTop: 28,
   },
 });
-
-const checkEmailValidation = () => {
-  Toast.show({
-    type: 'error',
-    text1: 'hello',
-  });
-};

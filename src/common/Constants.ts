@@ -14,3 +14,8 @@ export const Images = {
 }
 
  export const backIcon = Platform.OS == 'android' ? 'arrow-left' : 'chevron-left';
+
+ export const Errors = {
+    emmailValid: "Please enter the vaild email address.",
+    passwordValid: "Password must be greater than 8 characters."
+ }

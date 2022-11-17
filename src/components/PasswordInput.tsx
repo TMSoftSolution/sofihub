@@ -3,8 +3,13 @@ import {StyleSheet, TextInput, View} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {Colors, Fonts} from '../common';
 
-export const PasswordInput = () => {
+export interface PasswordInputProps {
+  onChange(valid: boolean, password: string): void;
+}
+
+export const PasswordInput = (props: PasswordInputProps) => {
   const [show, setShow] = useState(false);
+  const [valid, setValid] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -19,6 +24,15 @@ export const PasswordInput = () => {
         placeholder="Enter your password"
         secureTextEntry={!show}
         cursorColor={Colors.primary}
+        onChangeText={text => {
+          if (text.length < 8) {
+            setValid(false);
+            props.onChange(false, text);
+          } else {
+            setValid(true);
+            props.onChange(true, text);
+          }
+        }}
       />
       <IconButton
         icon={'eye-off-outline'}

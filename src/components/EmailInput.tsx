@@ -3,7 +3,11 @@ import {StyleSheet, TextInput, View} from 'react-native';
 import {IconButton} from 'react-native-paper';
 import {Colors, EmailPattern, Fonts} from '../common';
 
-export const EmailInput = () => {
+export interface EmailInputProps {
+  onChange(valid: boolean, email: string): void;
+}
+
+export const EmailInput = (props: EmailInputProps) => {
   const [valid, setValid] = useState(false);
 
   return (
@@ -22,8 +26,10 @@ export const EmailInput = () => {
         onChangeText={text => {
           if (EmailPattern.test(text)) {
             setValid(true);
+            props.onChange(true, text);
           } else {
             setValid(false);
+            props.onChange(false, text);
           }
         }}
       />
