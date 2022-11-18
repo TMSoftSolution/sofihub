@@ -15,6 +15,7 @@ import {
   EmailInput,
   ForgotPassword,
   Loader,
+  LoginSucess,
   PasswordInput,
   PrimaryButton,
   SignUpTextLink,
@@ -31,6 +32,7 @@ export const Login = ({navigation}: LoginProps) => {
   const [password, setPassword] = useState('');
   const [passwordValidate, setPasswordValidate] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
   const emailChanged = (valid: boolean, email: string) => {
     setEmail(email);
@@ -52,29 +54,32 @@ export const Login = ({navigation}: LoginProps) => {
       return;
     }
 
+    Keyboard.dismiss();
     login();
   };
 
   const login = () => {
     setLoading(true);
     auth()
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User account created & signed in!');
         setLoading(false);
+        setLoginSuccess(true);
       })
       .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-
-        console.error(error);
+        console.error(error.message);
+        Toast.show({
+          type: 'error',
+          text1: error.message,
+        });
         setLoading(false);
+        setLoginSuccess(false);
       });
+  };
+
+  const onHome = () => {
+    setLoginSuccess(false);
   };
 
   return (
@@ -109,6 +114,7 @@ export const Login = ({navigation}: LoginProps) => {
         </View>
       </TouchableWithoutFeedback>
       {loading && <Loader />}
+      {loginSuccess && <LoginSucess onHome={onHome} />}
     </SafeAreaView>
   );
 };

@@ -7,17 +7,17 @@ interface PrimaryButtonProps {
   onClick: (() => void) | undefined;
 }
 
-export const PrimaryButton = ({text, onClick}: PrimaryButtonProps) => {
+export const PrimaryButton = (props: PrimaryButtonProps) => {
   return (
     <Button
       uppercase={false}
       mode="contained"
       color={Colors.primary}
-      onPress={onClick}
+      onPress={props.onClick}
       style={styles.button}
       contentStyle={styles.buttonContent}
       labelStyle={styles.buttonLabel}>
-      {text}
+      {props.text}
     </Button>
   );
 };

@@ -11,6 +11,7 @@ export const Images = {
     logoWithBrand: require('./../assets/images/logo_with_brand.png'),
     welcomeLogo: require('./../assets/images/welcome_logo.png'),
     bgWelcome: require('./../assets/images/bg_welcome.png'),
+    loginSuccessRibbon: require('./../assets/images/login_success_ribbon.png'),
 }
 
  export const backIcon = Platform.OS == 'android' ? 'arrow-left' : 'chevron-left';
