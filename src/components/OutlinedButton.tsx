@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontSize: 16,
     fontWeight: '600',
-    fontFamily: Fonts.buttonText,
+    fontFamily: Fonts.SFSemiBold,
   },
 });

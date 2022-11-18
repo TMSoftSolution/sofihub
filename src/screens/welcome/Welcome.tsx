@@ -47,7 +47,7 @@ export const Welcome = ({navigation}: WelcomeNavigationProp) => {
           <OutlinedButton
             text="Sign Up"
             onClick={() => {
-              console.log('button clicked');
+              navigation.navigate('SignUp');
             }}
           />
           <Spacer space={38} />
