@@ -63,7 +63,7 @@ export const Login = ({navigation}: LoginProps) => {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('User account created & signed in!');
+        console.log('User logged in!');
         setLoading(false);
         setLoginSuccess(true);
       })

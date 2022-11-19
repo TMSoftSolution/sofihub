@@ -19,7 +19,6 @@ export const SignUp = ({navigation}: SignUpProps) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
   const [isAgree, setAgree] = useState(false);
@@ -115,15 +114,6 @@ export const SignUp = ({navigation}: SignUpProps) => {
             type="email"
             onChange={text => {
               setEmail(text);
-            }}
-          />
-          <Spacer space={16} />
-          <NormalInput
-            placeholder="Phone Number"
-            text={phone}
-            type="phone"
-            onChange={text => {
-              setPhone(text);
             }}
           />
           <Spacer space={16} />
