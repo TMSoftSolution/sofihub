@@ -8,9 +8,8 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import Toast from 'react-native-toast-message';
 import {RootStackParamList} from '../../App';
-import {Errors, Images} from '../../common';
+import {Errors, Images, showError} from '../../common';
 import {
   EmailInput,
   ForgotPassword,
@@ -46,11 +45,12 @@ export const Login = ({navigation}: LoginProps) => {
 
   const checkEmailValidation = () => {
     if (!emailValidate) {
-      Toast.show({type: 'error', text1: Errors.emmailValid});
+      showError(Errors.email);
       return;
     }
     if (!passwordValidate) {
-      Toast.show({type: 'error', text1: Errors.passwordValid});
+      showError(Errors.password);
+
       return;
     }
 
@@ -69,10 +69,7 @@ export const Login = ({navigation}: LoginProps) => {
       })
       .catch(error => {
         console.error(error.message);
-        Toast.show({
-          type: 'error',
-          text1: error.message,
-        });
+        showError(error.message);
         setLoading(false);
         setLoginSuccess(false);
       });

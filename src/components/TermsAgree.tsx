@@ -4,21 +4,19 @@ import {Checkbox} from 'react-native-paper';
 import {Colors, Fonts} from '../common';
 
 export interface TermsAgreeProps {
+  checked: boolean;
   onAgree(agree: boolean): void;
   onTerms: () => void;
   onPrivacy: () => void;
 }
 
 export const TermsAgree = (props: TermsAgreeProps) => {
-  const [checked, setChecked] = useState(false);
-
   return (
     <View style={styles.container}>
       <Checkbox
-        status={checked ? 'checked' : 'unchecked'}
+        status={props.checked ? 'checked' : 'unchecked'}
         onPress={() => {
-          setChecked(!checked);
-          props.onAgree(!checked);
+          props.onAgree(!props.checked);
         }}
         color={Colors.primary}
       />

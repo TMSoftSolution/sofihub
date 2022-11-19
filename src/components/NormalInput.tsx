@@ -1,24 +1,40 @@
 import {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View, KeyboardType} from 'react-native';
 import {Colors, Fonts} from '../common';
 
 export interface NormalInputProps {
   placeholder: string;
-  onChange(valid: boolean, text: string): void;
+  text: string;
+  type: 'email' | 'phone' | 'default';
+  secure?: boolean;
+  onChange(text: string): void;
 }
 
 export const NormalInput = (props: NormalInputProps) => {
-  const [valid, setValid] = useState(false);
-
+  let keyboardType: KeyboardType = 'default';
+  switch (props.type) {
+    case 'email':
+      keyboardType = 'email-address';
+      break;
+    case 'phone':
+      keyboardType = 'number-pad';
+      break;
+    default:
+      keyboardType = 'default';
+      break;
+  }
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.textInput}
         placeholder={props.placeholder}
         cursorColor={Colors.primary}
+        value={props.text}
         onChangeText={text => {
-          props.onChange(true, text);
+          props.onChange(text);
         }}
+        keyboardType={keyboardType}
+        secureTextEntry={props.secure}
       />
     </View>
   );

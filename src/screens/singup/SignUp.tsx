@@ -1,19 +1,85 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import {RootStackParamList} from '../../App';
-import {Images} from '../../common';
+import {EmailPattern, Errors, Images, showError} from '../../common';
 import {
+  Loader,
   NormalInput,
   PrimaryButton,
   Spacer,
   TermsAgree,
   TopNavigationBar,
 } from '../../components';
+import auth from '@react-native-firebase/auth';
 
 type SignUpProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
 export const SignUp = ({navigation}: SignUpProps) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [cPassword, setCPassword] = useState('');
+  const [isAgree, setAgree] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const checkValidate = () => {
+    if (firstName === '') {
+      showError(Errors.firstName);
+      return;
+    }
+    if (lastName === '') {
+      showError(Errors.lastName);
+      return;
+    }
+    if (!EmailPattern.test(email)) {
+      showError(Errors.email);
+      return;
+    }
+    if (lastName === '') {
+      showError(Errors.lastName);
+      return;
+    }
+    if (password.length < 8) {
+      showError(Errors.password);
+      return;
+    }
+    if (cPassword.length < 8) {
+      showError(Errors.password);
+      return;
+    }
+    if (password !== cPassword) {
+      showError(Errors.passwordMath);
+      return;
+    }
+    if (!isAgree) {
+      showError(Errors.termsAgree);
+      return;
+    }
+
+    signUp();
+  };
+
+  const signUp = () => {
+    setLoading(true);
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('User account created & signed in!');
+        setLoading(false);
+        setSuccess(true);
+      })
+      .catch(error => {
+        console.error(error.message);
+        showError(error.message);
+        setLoading(false);
+        setSuccess(false);
+      });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -25,30 +91,76 @@ export const SignUp = ({navigation}: SignUpProps) => {
         <View style={styles.mainContainer}>
           <Image source={Images.logoWithBrand} style={styles.logo} />
           <Spacer space={32} />
-          <NormalInput placeholder="First Name" onChange={() => {}} />
+          <NormalInput
+            placeholder="First Name"
+            text={firstName}
+            type="default"
+            onChange={text => {
+              setFirstName(text);
+            }}
+          />
           <Spacer space={16} />
-          <NormalInput placeholder="Last Name" onChange={() => {}} />
+          <NormalInput
+            placeholder="Last Name"
+            text={lastName}
+            type="default"
+            onChange={text => {
+              setLastName(text);
+            }}
+          />
           <Spacer space={16} />
-          <NormalInput placeholder="E-mail" onChange={() => {}} />
+          <NormalInput
+            placeholder="E-mail"
+            text={email}
+            type="email"
+            onChange={text => {
+              setEmail(text);
+            }}
+          />
           <Spacer space={16} />
-          <NormalInput placeholder="Phone Number" onChange={() => {}} />
+          <NormalInput
+            placeholder="Phone Number"
+            text={phone}
+            type="phone"
+            onChange={text => {
+              setPhone(text);
+            }}
+          />
           <Spacer space={16} />
-          <NormalInput placeholder="Password" onChange={() => {}} />
+          <NormalInput
+            placeholder="Password"
+            text={password}
+            type="default"
+            secure={true}
+            onChange={text => {
+              setPassword(text);
+            }}
+          />
           <Spacer space={16} />
-          <NormalInput placeholder="Confirm Password" onChange={() => {}} />
+          <NormalInput
+            placeholder="Confirm Password"
+            text={cPassword}
+            type="default"
+            secure={true}
+            onChange={text => {
+              setCPassword(text);
+            }}
+          />
           <Spacer space={16} />
           <TermsAgree
+            checked={isAgree}
             onAgree={agree => {
-              console.log(agree);
+              setAgree(agree);
             }}
             onTerms={() => {}}
             onPrivacy={() => {}}
           />
           <Spacer space={32} />
-          <PrimaryButton text="Sign Up" onClick={() => {}} />
+          <PrimaryButton text="Sign Up" onClick={checkValidate} />
           <Spacer space={32} />
         </View>
       </ScrollView>
+      {loading && <Loader />}
     </SafeAreaView>
   );
 };
