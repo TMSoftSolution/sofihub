@@ -96,7 +96,8 @@ export const Login = ({navigation}: LoginProps) => {
             <PasswordInput onChange={passwordChanged} />
             <ForgotPassword
               onClick={() => {
-                console.log('forgot password.');
+                // console.log('forgot password.');
+                navigation.navigate('SignUpSuccess');
               }}
             />
             <Spacer space={32} />

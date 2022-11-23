@@ -8,12 +8,14 @@ import {Login} from './screens/login/Login';
 import Toast from 'react-native-toast-message';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {SignUp} from './screens/singup/SignUp';
+import {SignUpSuccess} from './screens/singup/SignUpSuccess';
 
 export type RootStackParamList = {
   Onboarding: undefined;
   Welcome: undefined;
   Login: undefined;
   SignUp: undefined;
+  SignUpSuccess: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -46,6 +48,7 @@ const App = () => {
           <Stack.Screen name="Welcome" component={Welcome} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="SignUpSuccess" component={SignUpSuccess} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast />
