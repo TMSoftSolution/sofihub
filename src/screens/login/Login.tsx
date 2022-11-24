@@ -97,7 +97,7 @@ export const Login = ({navigation}: LoginProps) => {
             <ForgotPassword
               onClick={() => {
                 // console.log('forgot password.');
-                navigation.navigate('SignUpSuccess');
+                navigation.navigate('SignUpSuccess', {name: 'Tallman'});
               }}
             />
             <Spacer space={32} />

@@ -12,12 +12,13 @@ type SignUpSuccessProps = NativeStackScreenProps<
 
 const height = (443 * window.width) / 375.0;
 
-export const SignUpSuccess = ({navigation}: SignUpSuccessProps) => {
+export const SignUpSuccess = ({route, navigation}: SignUpSuccessProps) => {
+  const {name} = route.params;
   return (
     <View style={styles.container}>
       <Image source={Images.imgSignUpSuccess} style={styles.image}></Image>
       <Spacer space={16} />
-      <Text style={styles.title}>Welcome Rahi!</Text>
+      <Text style={styles.title}>Welcome {name}!</Text>
       <Spacer space={8} />
       <Text style={styles.subTitle}>Let's get you set up</Text>
       <View style={styles.bottomContainer}>
