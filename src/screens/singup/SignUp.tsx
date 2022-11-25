@@ -1,6 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useState} from 'react';
-import {Image, SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, View} from 'react-native';
 import {RootStackParamList} from '../../App';
 import {EmailPattern, Errors, Images, showError} from '../../common';
 import {
@@ -12,6 +12,7 @@ import {
   TopNavigationBar,
 } from '../../components';
 import auth from '@react-native-firebase/auth';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 type SignUpProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
