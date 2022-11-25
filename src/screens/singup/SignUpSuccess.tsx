@@ -1,6 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {RootStackParamList} from '../../App';
 import {Colors, Fonts, Images, window} from '../../common';
 import {PrimaryButton, Spacer} from '../../components';
@@ -15,16 +16,23 @@ const height = (443 * window.width) / 375.0;
 export const SignUpSuccess = ({route, navigation}: SignUpSuccessProps) => {
   const {name} = route.params;
   return (
-    <View style={styles.container}>
-      <Image source={Images.imgSignUpSuccess} style={styles.image}></Image>
-      <Spacer space={16} />
-      <Text style={styles.title}>Welcome {name}!</Text>
-      <Spacer space={8} />
-      <Text style={styles.subTitle}>Let's get you set up</Text>
-      <View style={styles.bottomContainer}>
-        <PrimaryButton text="NEXT" onClick={() => {}} />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        <Image source={Images.imgSignUpSuccess} style={styles.image}></Image>
+        <Spacer space={16} />
+        <Text style={styles.title}>Welcome {name}!</Text>
+        <Spacer space={8} />
+        <Text style={styles.subTitle}>Let's get you set up</Text>
+        <View style={styles.bottomContainer}>
+          <PrimaryButton
+            text="NEXT"
+            onClick={() => {
+              navigation.navigate('Home');
+            }}
+          />
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

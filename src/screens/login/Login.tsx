@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import {
   Image,
   Keyboard,
-  SafeAreaView,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
@@ -22,6 +21,7 @@ import {
   TopNavigationBar,
 } from '../../components';
 import auth from '@react-native-firebase/auth';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 

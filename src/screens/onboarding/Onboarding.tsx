@@ -1,10 +1,11 @@
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {FAB} from 'react-native-paper';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {RootStackParamList} from '../../App';
 import {Colors} from '../../common/AppStyle';
-import {Pagination, TopNavigationBar} from '../../components';
+import {AppStatusBar, Pagination, TopNavigationBar} from '../../components';
 import {Onboarding1, Onboarding2, Onboarding3} from './components';
 
 type OnboardingNavigationProp = NativeStackScreenProps<
@@ -31,6 +32,7 @@ export const Onboarding = ({navigation}: OnboardingNavigationProp) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <AppStatusBar />
       <View style={styles.containerInner}>
         <TopNavigationBar
           showSkip={true}

@@ -9,6 +9,8 @@ import Toast from 'react-native-toast-message';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {SignUp} from './screens/singup/SignUp';
 import {SignUpSuccess} from './screens/singup/SignUpSuccess';
+import {Home} from './screens/home/Home';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -16,6 +18,7 @@ export type RootStackParamList = {
   Login: undefined;
   SignUp: undefined;
   SignUpSuccess: {name: string};
+  Home: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -40,18 +43,24 @@ const App = () => {
 
   return (
     <>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Onboarding"
-          screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Onboarding" component={Onboarding} />
-          <Stack.Screen name="Welcome" component={Welcome} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="SignUpSuccess" component={SignUpSuccess} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      <Toast />
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Onboarding"
+            screenOptions={{
+              headerShown: false,
+              contentStyle: {backgroundColor: 'white'},
+            }}>
+            <Stack.Screen name="Onboarding" component={Onboarding} />
+            <Stack.Screen name="Welcome" component={Welcome} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="SignUpSuccess" component={SignUpSuccess} />
+            <Stack.Screen name="Home" component={Home} />
+          </Stack.Navigator>
+        </NavigationContainer>
+        <Toast />
+      </SafeAreaProvider>
     </>
   );
 };
